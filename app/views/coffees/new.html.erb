@@ -1,1 +1,28 @@
 <h1>Add a new coffee</h1>
+
+<%= form_for(@coffee) do |f|%>
+    <div>
+        <% f.label :name %>
+        <% f.text_field :name %>
+    </div>
+    <div>
+        <% f.label :roast_type %>
+        <% f.text_field :roast_type %>
+    </div>
+    <div>
+        <% f.label :description %>
+        <% f.text_field :description %>
+    </div>
+
+    <p>Select a brand: </p>
+
+    <p>Create a new brand: </p>
+
+    <%= f.submit %>
+<% end %>
+
+# t.string "name"
+# t.string "roast_type"
+# t.string "description"
+# t.integer "brand_id", 
+# t.integer "user_id",
