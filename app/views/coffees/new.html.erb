@@ -15,8 +15,19 @@
     </div>
 
     <p>Select a brand: </p>
+    <div>
+    <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select'%>
 
-    <p>Create a new brand: </p>
+  </div>
+
+  <p> Create a new brand: </p>
+  <div>
+    <%=f.fields_for :brand do |b| %>
+      <%= b.label :name %>
+      <%= b.text_field :name %>
+    <% end %>
+  </div>
+  <br>
 
     <%= f.submit %>
 <% end %>
