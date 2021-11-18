@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
 
     def create
         User.find_by(username :params[:user][:username])
-        if @user && @user.authenticate(password: params[:user][:password])
+        # if @user && @user.authenticate(password: params[:user][:password])
     end
 end
