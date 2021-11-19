@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :reviews
   resources :coffees do
-    resources :reviews, only [:new, :index]
+    resources :reviews, only: [:new, :index]
   end
   resources :brands
   resources :users
