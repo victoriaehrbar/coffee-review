@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_11_17_195300) do
 
   create_table "brands", force: :cascade do |t|
-    t.string "name"
+    t.string "brand_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

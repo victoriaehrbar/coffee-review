@@ -16,23 +16,17 @@
 
     <p>Select a brand: </p>
     <div>
-        <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select'%>
+        <%= f.collection_select :brand_id, Brand.all, :id, :brand_name, include_blank: 'Select'%>
     </div>
 
   <p> Create a new brand: </p>
   <div>
     <%=f.fields_for :brand do |b| %>
-      <%= b.label :name %>
-      <%= b.text_field :name %>
+      <%= b.label :brand_name %>
+      <%= b.text_field :brand_name %>
     <% end %>
   </div>
   <br>
 
     <%= f.submit %>
 <% end %>
-
-# t.string "name"
-# t.string "roast_type"
-# t.string "description"
-# t.integer "brand_id", 
-# t.integer "user_id",
