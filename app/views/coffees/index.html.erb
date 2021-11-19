@@ -1,0 +1,12 @@
+<h1>All coffees</h1>
+
+<% @coffees.each do |c| %>
+
+  <h2><%= link_to ic.name, coffee_path(c.id)%> - <%= c.brand.brand_name %> </h2>
+  <%= link_to "Write a review", new_coffee_review_path%>
+  <% if c.image.attached? %>
+    <%= image_tag url_for(c.thumbnail)%>
+  <% end %>
+  <div>
+    <p><%= c.description %></p>
+  </div>
