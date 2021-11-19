@@ -5,6 +5,15 @@ class CoffeesController < ApplicationController
         @coffee.build_brand
     end
 
+    def create
+        @coffee = coffee.new(coffee_params)
+        if @coffee.save
+            redirect_to coffee_path(@coffee)
+        else
+            render :new
+        end
+    end
+
     private
 
     def coffee_params
