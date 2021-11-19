@@ -6,9 +6,27 @@ class ReviewsController < ApplicationController
         else
           @review = Review.new
         end
-      end
+    end
 
+    def create
+        @review = current_user.reviews.build(review_params)
+        if @review.save
+          redirect_to review_path(@review)
+        else
+          render :new
+        end
+    end
+
+    def show
+        @review = Review.find_by_id(params[:id])
+    end
+    
     def index
+        if @coffee = Coffee.find_by_id(params[:coffee_id])
+           @reviews = @coffee.reviews
+        else
+            @reviews = Review.all
+        end
     end
 
     private
