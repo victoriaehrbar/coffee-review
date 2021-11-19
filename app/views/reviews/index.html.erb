@@ -1,0 +1,15 @@
+<% if @coffee %>
+  <h1>Reviews for <%= @coffee.name%> - <%= @coffee.brand_name%></h1>
+<% else %>
+  <h1>All reviews </h1>
+<% end %>
+
+<ul>
+<% @reviews.each do |review| %>
+
+  <li>
+    <%= @review.coffee.name%>: <%= link_to @review.title, review_path(review)%> - <%= @review.score%>
+  </li> <br>
+
+<% end %>
+</ul>
