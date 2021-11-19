@@ -1,0 +1,19 @@
+<%= form_for(@review) do |f| %>
+    <div>
+        <%= f.label :score %>
+        <%= f.text_field :score %>
+    </div>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <div>
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+    </div>
+
+        # t.integer "score"
+        # t.string "title"
+        # t.string "content"
+        # t.integer "user_id", null: false
+        # t.integer "coffee_id", null: false
