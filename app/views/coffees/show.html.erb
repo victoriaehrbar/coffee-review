@@ -1,0 +1,19 @@
+<h1><%= @coffee.name%>  </h1>
+
+
+<% if @coffee.image.attached? %>
+  <%= image_tag url_for(@coffee.image) %>
+<% end %>
+
+<h2> <%= @coffee.brand_name %> </h2>
+<div>
+  <p><%= @coffee.description %></p>
+</div>
+
+<h3>Added by: <%= link_to @coffee.user, user_path(@user)%> </h3>
+
+<%= link_to "Edit #{@coffee.flavor}", edit_coffee_path(@coffee) if @coffee.user == current_user%>
+
+<br></br>
+
+<%= link_to "See all reviews", coffee_reviews_path(@coffee) %>
