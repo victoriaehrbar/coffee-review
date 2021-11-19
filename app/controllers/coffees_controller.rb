@@ -6,7 +6,7 @@ class CoffeesController < ApplicationController
     end
 
     def create
-        @coffee = coffee.new(coffee_params)
+        @coffee = Coffee.new(coffee_params)
         if @coffee.save
             redirect_to coffee_path(@coffee)
         else
