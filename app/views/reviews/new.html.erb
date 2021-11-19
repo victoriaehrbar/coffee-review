@@ -1,4 +1,4 @@
-<h1>New review: </h1>
+<h1>New review for <%=@review.coffee.brand.brand_name %>: </h1>
 
 <%= form_for(@review) do |f| %>
     <div>
@@ -11,7 +11,7 @@
     </div>
     <div>
         <%= f.label :content %>
-        <%= f.text_field :content %>
+        <%= f.text_area :content, size: "50x20" %>
     </div>
         <%= f.hidden_field :coffee_id %>
         <%= f.submit %>
