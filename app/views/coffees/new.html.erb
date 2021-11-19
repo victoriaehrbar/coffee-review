@@ -16,15 +16,18 @@
 
     <p>Select a brand: </p>
     <div>
-    <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select'%>
-
-  </div>
+        <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select'%>
+    </div>
 
   <p> Create a new brand: </p>
   <div>
     <%=f.fields_for :brand do |b| %>
       <%= b.label :name %>
       <%= b.text_field :name %>
+      <%= b.label :roast_type %>
+      <%= b.text_field :roast_type %>
+      <%= b.label :description %>
+      <%= b.text_field :description %>
     <% end %>
   </div>
   <br>
