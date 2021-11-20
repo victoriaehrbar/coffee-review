@@ -16,7 +16,7 @@ class Coffee < ApplicationRecord
   def not_a_duplicate
     coffee = Coffee.find_by(name: name, brand_id: brand_id)
     if !!coffee && coffee != self
-      errors.add(:name, 'has already been added for that brand')
+      errors.add(:name, 'already added')
     end
   end
 end
