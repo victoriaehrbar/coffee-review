@@ -4,6 +4,8 @@
 
 errors.add(:name, "has already been added for this brand")
 
+<% if errors[:name].include?()
+
 <%= form_for(@coffee) do |f|%>
     <div>
         <% f.label :name %>

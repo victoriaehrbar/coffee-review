@@ -8,6 +8,12 @@ class Coffee < ApplicationRecord
   validates :name, presence: true
   validate :not_a_duplicate
 
+  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(score) desc')}
+
+  def self.alpha
+    order(:name)
+  end
+
   def brand_attributes=(attributes)
     self.brand = Brand.find_or_create_by(attributes) if !attributes['brand_name'].empty?
     self.brand
@@ -18,5 +24,9 @@ class Coffee < ApplicationRecord
     if !!coffee && coffee != self
       errors.add(:name, 'already added')
     end
+  end
+
+  def name_and_brand_name
+    "#{name} - #{brand.try(:brand_name)}"
   end
 end
