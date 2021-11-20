@@ -15,6 +15,14 @@ class CoffeesController < ApplicationController
         end
     end
 
+    def index
+        @coffees = Coffee.All 
+    end
+
+    def show
+        @coffee = Coffee.find_by_id(params[:id])
+    end
+
     private
 
     def coffee_params
