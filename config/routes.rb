@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
-  get /auth/google_oath2/callback' => 'sessions#omniauth'
+  # get /auth/google_oath2/callback' => 'sessions#omniauth'
   
   resources :reviews
   resources :coffees do
