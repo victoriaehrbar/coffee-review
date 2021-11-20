@@ -8,7 +8,7 @@ class Coffee < ApplicationRecord
   validates :name, presence: true
   validate :not_a_duplicate
 
-  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(score) desc')}
+  scope :order_by_score, -> {left_joins(:reviews).group(:id).order('avg(score) desc')}
 
   def self.alpha
     order(:name)

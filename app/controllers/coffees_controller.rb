@@ -16,7 +16,7 @@ class CoffeesController < ApplicationController
     end
 
     def index
-        @coffees = Coffee.All 
+        @coffees = Coffee.order_by_score.includes(:brand_name)
     end
 
     def show
