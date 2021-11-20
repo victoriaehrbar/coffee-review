@@ -49,3 +49,4 @@ def omniauth
       request.env['omniauth.auth']
     end
 end
+end
