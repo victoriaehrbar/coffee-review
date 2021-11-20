@@ -12,17 +12,28 @@ class SessionsController < ApplicationController
     end
 
     def create
-        User.find_by(username :params[:user][:username])
-        # if @user && @user.authenticate(password: params[:user][:password])
 
-        if @user.try(:authenticate, params[:user][:password])
-            session[:user_id] = @user.user_id
-            redirect_to user_path(@user)
+        if params[:provider] == 'google_oauth2'
+          @user = User.create_by_google_omniauth(auth)
+          session[:user_id] = @user.id
+          redirect_to user_path(@user)
+    
+        elsif params[:provider] == 'github'
+          @user = User.create_by_github_omniauth(auth)
+          session[:user_id] = @user.id
+          redirect_to user_path(@user)
         else
-            flash[:error] = "Incorrect login info"
+          @user = User.find_by(username: params[:user][:username])
+    
+          if @user && @user.authenticate(password: params[:user][:password])
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+          else
+            flash[:error] = "Incorrect login credentials."
             redirect_to login_path
+          end
         end
-    end
+      
 
 
 def omniauth
