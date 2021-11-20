@@ -3,6 +3,14 @@
 <%= render partial: 'layouts/errors', locals: {object: @review}  %>
 
 <%= form_for(@review) do |f| %>
+    <% if params[:coffee_id] %>
+        <%= f.hidden_field :coffee_id %>
+    <% else %>
+    <div>
+    <%= f.label :coffee_id, "Select a coffee" %>
+    <%= f.collection_select :coffee_id, Coffee.alpha, :id, :name_and_brand_name, include_blank: true %>
+  </div>
+<% end %>
     <div>
         <%= f.label :score %>
         <%= f.number_field :stars, min:0, max:10 %>
