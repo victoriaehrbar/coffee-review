@@ -13,7 +13,7 @@
 <% end %>
     <div>
         <%= f.label :score %>
-        <%= f.number_field :stars, min:0, max:10 %>
+        <%= f.number_field :score, min:0, max:10 %>
     </div>
     <div>
         <%= f.label :title %>
@@ -21,16 +21,9 @@
     </div>
     <div>
         <%= f.label :content %>
-        <%= f.text_area :content, size: "30x15" %>
+        <%= f.text_area :content, size: "30x10" %>
         </div>
         <br>
       
         <%= f.submit %>
       <% end %>
-
-        #schema reference below
-        # t.integer "score"
-        # t.string "title"
-        # t.string "content"
-        # t.integer "user_id", null: false
-        # t.integer "coffee_id", null: false

@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
             redirect_to login_path
           end
         end
+      end
       
 
 
@@ -48,5 +49,4 @@ def omniauth
     def auth
       request.env['omniauth.auth']
     end
-end
 end
