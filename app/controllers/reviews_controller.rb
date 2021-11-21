@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :redirect_if_not_logged_in
 
     def new
         if @coffee = Coffee.find_by_id(params[:coffee_id])
@@ -22,9 +23,12 @@ class ReviewsController < ApplicationController
     end
     
     def index
+      #validate if nested
         if @coffee = Coffee.find_by_id(params[:coffee_id])
-           @reviews = @coffee.reviews
+          #nested 
+          @reviews = @coffee.reviews
         else
+          #not nested
             @reviews = Review.all
         end
     end
