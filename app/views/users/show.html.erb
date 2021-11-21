@@ -1,1 +1,8 @@
 <h1>Welcome <%= @user.username%></h1>
+
+<h3>Coffees reviewed by <%=@user.username%>:</h3>
+<ul>
+  <% @user.reviewed_coffees.each do |ic|%>
+  <li> <%= link_to c.name_and_brand_name, coffee_path(c)%> </li>
+  <% end %>
+</ul>
