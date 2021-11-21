@@ -26,6 +26,10 @@ class Coffee < ApplicationRecord
     end
   end
 
+  # def coffee_brand_name
+  #   brand.try(:brand_name)
+  # end
+
   def name_and_brand_name
     "#{name} - #{brand.try(:brand_name)}"
   end
