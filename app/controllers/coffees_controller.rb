@@ -1,4 +1,6 @@
 class CoffeesController < ApplicationController
+    before_action :set_coffee, only:[:show, :edit, :update]
+    before_action :redirect_if_not_logged_in
 
     def new
         @coffee = Coffee.new
@@ -11,6 +13,7 @@ class CoffeesController < ApplicationController
         if @coffee.save
             redirect_to coffee_path(@coffee)
         else
+            @coffee.build_brand
             render :new
         end
     end
@@ -20,12 +23,28 @@ class CoffeesController < ApplicationController
     end
 
     def show
-        @coffee = Coffee.find_by_id(params[:id])
+        # @coffee = Coffee.find_by_id(params[:id])
+    end
+
+    def edit
+    end
+
+    def update
+        if @coffee.update(coffee_params)
+            redirect_to coffee_path(@coffee)
+        else
+            render :edit
+        end
     end
 
     private
 
     def coffee_params
       params.require(:coffee).permit(:name, :roast_type, :description, :brand_id, brand_attributes: [:brand_name])
+    end
+
+    def set_coffee
+        @coffee = Coffee.find_by(params[:id])
+        redirect_to coffee_path if !@coffee
     end
 end
