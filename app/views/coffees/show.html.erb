@@ -1,10 +1,6 @@
 <h1><%= @coffee.name%>  </h1>
 
 
-<% if @coffee.image.attached? %>
-  <%= image_tag url_for(@coffee.image) %>
-<% end %>
-
 <h2> <%= @coffee.brand_name %> </h2>
 <div>
   <p><%= @coffee.description %></p>
@@ -16,4 +12,4 @@
 
 <br></br>
 
-<%= link_to "See all reviews", coffee_reviews_path(@coffee) %>
+<%= link_to "Show all reviews", coffee_reviews_path(@coffee) %>
