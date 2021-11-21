@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   # get /auth/google_oath2/callback' => 'sessions#omniauth'
   
+  get '/auth/:provider/callback' => 'sessions#create'
+
   resources :reviews
   resources :coffees do
     resources :reviews, only: [:new, :index]
