@@ -1,0 +1,32 @@
+<%= render partial: 'errors', locals: {object: @coffee}  %>
+<% form_for(@coffee) do |f|%>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :roast_type %>
+    <%= f.text_field :roast_type %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+ 
+
+  <p> Select an existing brand: </p>
+  <div>
+    <%= f.collection_select :brand_id, Brand.all, :id, :brand_name, include_blank: 'Select brand'%>
+
+  </div>
+
+  <p> Or add a new brand: </p>
+  <div>
+    <%=f.fields_for :brand do |b| %>
+      <%= b.label :brand_name %>
+      <%= b.text_field :brand_name %>
+    <% end %>
+  </div>
+  <br>
+  <%= f.submit %>
+<% end %>
