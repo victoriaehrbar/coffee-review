@@ -1,6 +1,6 @@
 
 <%=  display_header(@review)%>
-<%= render partial: 'layouts/errors', locals: {object: @review}  %>
+<%= render partial: 'layouts/errors' %>
 
 <%= form_for(@review) do |f| %>
     <% if params[:coffee_id] %>
